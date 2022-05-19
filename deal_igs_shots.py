@@ -33,13 +33,13 @@ def auto_deal_igs(igs_file, out_psm_path, out_bmp_path):
 
     # 输入文件名
     pag.typewrite(message=igs_file, interval=0.1)
-    pag.press('enter')
+    pag.press('enter')  # 进入
 
     # 转换成psm文件
+    # 摁5下方向右键
     time.sleep(1)
-    button_psm = pag.locateCenterOnScreen(r'icon_psm.png', region=(800, 240, 1000, 400), confidence=0.5)
-    pag.moveTo(*button_psm, duration=0.5)
-    pag.doubleClick(button='left')
+    pag.press(['right', 'right', 'right', 'right', 'right'], interval=0.25)
+    pag.press('enter')  # 进入
 
     # 等待进入
     time.sleep(5)
@@ -59,20 +59,14 @@ def auto_deal_igs(igs_file, out_psm_path, out_bmp_path):
     # 点击另存为图片
     pag.click(215, 13)  # 下拉框
     pag.click(226, 56)  # 另存为图片
-    button_save = pag.locateCenterOnScreen(r'icon_save.png', region=(1000, 700, 1300, 800), confidence=0.7)
-    pag.moveTo(*button_save, duration=0.5)
-    pag.click(button='left')
+    pag.press('enter')  # 保存
 
     # 点击x 关闭并保存
     pag.click(302, 156)  # 点击x
-    button_yes = pag.locateCenterOnScreen(r'icon_yes.png', region=(850, 580, 950, 650), confidence=0.7)
-    pag.moveTo(*button_yes, duration=0.5)
-    pag.click(button='left')  # 点击是
+    pag.press('enter')  # 保存
 
     time.sleep(1)
-    button_save = pag.locateCenterOnScreen(r'icon_save.png', region=(1000, 700, 1300, 800), confidence=0.7)
-    pag.moveTo(*button_save, duration=0.5)
-    pag.click(button='left')  # 点击保存
+    pag.press('enter')  # 保存
 
 
 def file_match(path_folder, suffix):
